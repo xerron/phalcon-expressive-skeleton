@@ -1,0 +1,66 @@
+{
+    "name": "xerron/phalcon-expressive-skeleton",
+    "description": "Phalcon expressive skeleton.",
+    "type": "project",
+    "homepage": "https://github.com/xerron/phalcon-expressive-skeleton",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.0",
+        "ext-phalcon": "^3.0.1",
+        "http-interop/http-middleware": "^0.4.1",
+        "roave/security-advisories": "dev-master",
+        "xerron/phalcon-expressive": "dev-master",
+        "twig/twig": "^2.3",
+        "zendframework/zend-component-installer": "^1.0",
+        "zendframework/zend-config-aggregator": "^1.0",
+        "zendframework/zend-stdlib": "^3.1"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.1.7",
+        "kint-php/kint": "*",
+        "phalcon/ide-stubs": "v3.1.2",
+        "phpunit/phpunit": "^6.0.8",
+        "squizlabs/php_codesniffer": "^2.8.1",
+        "malukenho/docheader": "^0.1.5",
+        "mockery/mockery": "^0.9.5",
+        "zfcampus/zf-development-mode": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "System\\": "src/System/src/",
+            "User\\": "src/User/src/",
+            "Profile\\": "src/Profile/src/",
+            "Contact\\": "src/Contact/src/",
+            "Devel\\": "src/Devel/src/",
+            "Language\\": "src/Language/src/",
+            "Xerron\\Entity\\": "src/xerron/php-entity/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AppTest\\": "test/AppTest/"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@development-enable"
+        ],
+        "development-disable": "zf-development-mode disable",
+        "development-enable": "zf-development-mode enable",
+        "development-status": "zf-development-mode status",
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "clear-config-cache": "php bin/clear-config-cache.php",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "upload-coverage": "coveralls -v"
+    }
+}
